@@ -4,6 +4,16 @@
   padding-top: 3rem;
 }
 
-h1{
-    text-align: center;
+h1 {
+  text-align: center;
+}
+
+.gradient-custom {
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    25deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(9, 121, 101, 1) 35%,
+    rgb(110, 0, 212) 100%
+  );
 }
