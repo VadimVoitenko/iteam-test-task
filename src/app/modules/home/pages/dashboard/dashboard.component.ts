@@ -15,7 +15,6 @@ export class DashboardComponent {
   ngOnInit(): void {
     this.userService.getUserAssessments().subscribe(
       (response) => {
-        // console.log(response);
         this.assessmentList = response;
       },
       (error) => {

@@ -27,7 +27,7 @@ export class UserService {
       'X-Token': '' + this.authService.getToken(),
     };
     return this.http.get<IAssessmentGraph>(
-      API_ROUTES.USERASSESSMENTS_GRAPH + id,
+      API_ROUTES.USERASSESSMENTS_GRAPH_BY_ID(id),
       { headers }
     );
   }
