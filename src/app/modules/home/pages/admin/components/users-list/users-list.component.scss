@@ -1,0 +1,23 @@
+.mat-mdc-table {
+  background: inherit !important;
+  box-shadow: 0 5px 45px 0 rgba(80, 106, 156, 0.17);
+
+  .mat-mdc-header-cell {
+    font-size: 16px;
+    color: black;
+  }
+}
+
+.mdc-data-table__cell {
+  font-size: 16px;
+  color: black;
+}
+
+table {
+  border-radius: 25px;
+  table-layout: fixed;
+  th,
+  td {
+    padding: 8px;
+  }
+}
