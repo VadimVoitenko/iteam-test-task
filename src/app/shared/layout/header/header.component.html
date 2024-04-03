@@ -1,0 +1,14 @@
+<header>
+  <div class="container">
+    <nav class="navbar">
+      <ul class="navbar-list">
+        <li *ngIf="isAdmin()" class="navbar-list__item">
+          <button (click)="toAdminPage()" class="button">Admin</button>
+        </li>
+        <li class="navbar-list__item">
+          <button (click)="logout()" class="button">Logout</button>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
