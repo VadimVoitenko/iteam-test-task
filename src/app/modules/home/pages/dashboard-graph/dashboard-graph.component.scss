@@ -1,0 +1,30 @@
+section {
+    min-height: 100vh;
+  
+    .graph {
+      &-content {
+        padding: 10px 0;
+  
+        .info {
+          margin: 20px 0;
+  
+          h3 {
+            font-size: 24px;
+          }
+  
+          strong {
+            display: block;
+            font-size: 16px;
+            margin: 10px 0;
+          }
+  
+          span,
+          p {
+            display: inline-block;
+            font-size: 16px;
+          }
+        }
+      }
+    }
+  }
+  

@@ -1,0 +1,18 @@
+<section class="graph">
+    <div class="container">
+      <div class="graph-content">
+        <button (click)="goBack()" class="button">Go Back</button>
+        <div class="info" *ngIf="userGraph">
+          <h3>User Assessment Report</h3>
+          <strong>Data</strong>
+          <div class="item"><span>Agreeableness: <p>{{ userGraph.data.agreeableness }}</p></span></div>
+          <div class="item"><span>Drive: <p>{{ userGraph.data.drive }}</p></span></div>
+          <div class="item"><span>Luck: <p>{{ userGraph.data.luck }}</p></span></div>
+          <div class="item"><span>Openess: <p>{{ userGraph.data.openness }}</p></span></div>
+          <strong>Type</strong>
+          <div class="item"><span>Type: <p>{{ userGraph.type }}</p></span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
