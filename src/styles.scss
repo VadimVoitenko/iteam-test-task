@@ -1,7 +1,35 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 
-html{
-    font-family: 'Roboto', sans-serif;
-}
 /* Importing Bootstrap SCSS file. */
-@import 'bootstrap/scss/bootstrap';
+@import "bootstrap/scss/bootstrap";
+
+/* Importing Custom Reset Styles SCSS file*/
+@import "assets/scss/reset.scss";
+
+html {
+  font-family: "Roboto", sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+}
+
+.button {
+  padding: 10px 20px;
+  border-radius: 8px;
+  color: #fff;
+  background: #01c584;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+
+  &:hover {
+    scale: 0.95;
+    background-color: #01c584bb;
+  }
+}

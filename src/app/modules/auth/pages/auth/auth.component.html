@@ -1,4 +1,4 @@
-<div class="container py-5 h-100">
+<div class="container py-5 h-100 vh-100">
   <div class="row d-flex justify-content-center align-items-center h-100">
     <div class="col-12 col-md-8 col-lg-6 col-xl-5">
       <div class="card bg-dark text-white" style="border-radius: 1rem">
@@ -6,7 +6,7 @@
           <div class="mb-md-5 mt-md-4 pb-5">
             <h2 class="fw-bold mb-4 text-uppercase text-center">Login</h2>
 
-            <form [formGroup]="loginForm" (ngSubmit)="login()">
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
               <div class="form-outline form-white mb-4">
                 <label class="form-label" for="typeEmailX">Email</label>
                 <input
@@ -15,6 +15,7 @@
                   id="typeEmailX"
                   class="form-control form-control-lg"
                   required=""
+                  placeholder="Enter email"
                 />
 
                 <p
@@ -35,6 +36,7 @@
                   id="typePasswordX"
                   class="form-control form-control-lg"
                   required=""
+                  placeholder="Enter password"
                 />
                 <p
                   *ngIf="

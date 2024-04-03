@@ -1,18 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
+  selector: 'app-auth',
+  templateUrl: './auth.component.html',
+  styleUrls: ['./auth.component.scss'],
 })
-export class LoginComponent implements OnInit {
+export class AuthComponent implements OnInit {
   loginForm!: FormGroup;
   emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   passwordRegex = /^(?=.*[a-zA-Z])[a-zA-Z0-9]{6,}$/;
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({
@@ -27,13 +28,14 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  login() {
+  onSubmit() {
     const { email, password } = this.loginForm.value;
 
-    this.authService.login(email, password).subscribe(
+    this.authService.login({ email, password }).subscribe(
       (response) => {
-        console.log(response);
-        localStorage.setItem('token', response.token);
+        localStorage.setItem('X-Token', response.token);
+        localStorage.setItem('role', response.role);
+        this.router.navigate(['dashboard']);
       },
       (error) => {
         console.error('Login failed: ', error);
