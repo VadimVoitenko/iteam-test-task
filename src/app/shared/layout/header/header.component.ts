@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/modules/auth/services/auth.service';
+import { LocalStorageService } from 'src/app/modules/auth/services/local-storage.service';
 
 @Component({
   selector: 'app-header',
@@ -8,10 +9,14 @@ import { AuthService } from 'src/app/modules/auth/services/auth.service';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private localStorage: LocalStorageService
+  ) {}
 
   isAdmin(): boolean {
-    if (localStorage.getItem('role') === 'Admin') {
+    if (this.localStorage.getItem('role') === 'Admin') {
       return true;
     } else {
       return false;

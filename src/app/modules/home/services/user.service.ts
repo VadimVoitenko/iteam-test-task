@@ -1,21 +1,24 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { AuthService } from '../../auth/services/auth.service';
 import { IAssessment } from '../interfaces/IAssessment';
 import { IAssessmentGraph } from '../interfaces/IAssessmentGraph';
 import { IUser } from '../interfaces/IUser';
 import { API_ROUTES } from 'src/app/shared/api/routes';
+import { LocalStorageService } from '../../auth/services/local-storage.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  constructor(private http: HttpClient, private authService: AuthService) {}
+  constructor(
+    private http: HttpClient,
+    private localStorage: LocalStorageService
+  ) {}
 
   getUserAssessments(): Observable<IAssessment[]> {
     const headers = {
-      'X-Token': '' + this.authService.getToken(),
+      'X-Token': '' + this.localStorage.getToken(),
     };
     return this.http.get<IAssessment[]>(API_ROUTES.USERASSESSMENTS, {
       headers,
@@ -24,7 +27,7 @@ export class UserService {
 
   getUserAssessmentGraphById(id: number): Observable<IAssessmentGraph> {
     const headers = {
-      'X-Token': '' + this.authService.getToken(),
+      'X-Token': '' + this.localStorage.getToken(),
     };
     return this.http.get<IAssessmentGraph>(
       API_ROUTES.USERASSESSMENTS_GRAPH_BY_ID(id),
@@ -34,7 +37,7 @@ export class UserService {
 
   getUsers(): Observable<IUser[]> {
     const headers = {
-      'X-Token': '' + this.authService.getToken(),
+      'X-Token': '' + this.localStorage.getToken(),
     };
     return this.http.get<IUser[]>(API_ROUTES.USERS, { headers });
   }

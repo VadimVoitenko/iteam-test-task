@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { LocalStorageService } from '../../services/local-storage.service';
 
 @Component({
   selector: 'app-auth',
@@ -13,7 +14,11 @@ export class AuthComponent implements OnInit {
   emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   passwordRegex = /^(?=.*[a-zA-Z])[a-zA-Z0-9]{6,}$/;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private localStorage: LocalStorageService
+  ) {}
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({
@@ -33,8 +38,8 @@ export class AuthComponent implements OnInit {
 
     this.authService.login({ email, password }).subscribe(
       (response) => {
-        localStorage.setItem('X-Token', response.token);
-        localStorage.setItem('role', response.role);
+        this.localStorage.setToken(response.token);
+        this.localStorage.setItem('role', response.role);
         this.router.navigate(['dashboard']);
       },
       (error) => {
