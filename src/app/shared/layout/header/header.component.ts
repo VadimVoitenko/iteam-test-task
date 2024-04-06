@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { LocalStorageService } from 'src/app/core/services/local-storage.service';
 import { AuthService } from 'src/app/modules/auth/services/auth.service';
-import { LocalStorageService } from 'src/app/modules/auth/services/local-storage.service';
 
 @Component({
   selector: 'app-header',
@@ -12,11 +12,11 @@ export class HeaderComponent {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private localStorage: LocalStorageService
+    private localStorageService: LocalStorageService
   ) {}
 
   isAdmin(): boolean {
-    if (this.localStorage.getItem('role') === 'Admin') {
+    if (this.localStorageService.getItem('role') === 'Admin') {
       return true;
     } else {
       return false;

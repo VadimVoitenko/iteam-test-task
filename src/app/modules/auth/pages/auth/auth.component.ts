@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
-import { LocalStorageService } from '../../services/local-storage.service';
+import { LocalStorageService } from 'src/app/core/services/local-storage.service';
 
 @Component({
   selector: 'app-auth',
@@ -17,7 +17,7 @@ export class AuthComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private localStorage: LocalStorageService
+    private localStorageService: LocalStorageService
   ) {}
 
   ngOnInit(): void {
@@ -38,8 +38,8 @@ export class AuthComponent implements OnInit {
 
     this.authService.login({ email, password }).subscribe(
       (response) => {
-        this.localStorage.setToken(response.token);
-        this.localStorage.setItem('role', response.role);
+        this.localStorageService.setItem('X-Token', response.token);
+        this.localStorageService.setItem('role', response.role);
         this.router.navigate(['dashboard']);
       },
       (error) => {

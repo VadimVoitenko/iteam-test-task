@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { IAuthCredentials } from '../interfaces/IAuthCredentials';
 import { IAuthResponse } from '../interfaces/IAuthResponse';
 import { API_ROUTES } from 'src/app/shared/api/routes';
-import { LocalStorageService } from './local-storage.service';
+import { LocalStorageService } from 'src/app/core/services/local-storage.service';
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +16,7 @@ export class AuthService {
   constructor(
     private http: HttpClient,
     private router: Router,
-    private localStorage: LocalStorageService
+    private localStorageService: LocalStorageService
   ) {}
 
   login(user: IAuthCredentials): Observable<IAuthResponse> {
@@ -26,7 +26,7 @@ export class AuthService {
 
   logout() {
     this.isLoggedIn = false;
-    this.localStorage.clear();
+    this.localStorageService.clear();
     this.router.navigateByUrl(API_ROUTES.LOGIN);
   }
 
